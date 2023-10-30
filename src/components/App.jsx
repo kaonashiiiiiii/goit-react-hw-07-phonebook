@@ -1,16 +1,27 @@
-export const App = () => {
+import { useEffect } from "react";
+import { ContactForm, FilterForm, Section, ContactList } from "."
+import { useDispatch } from "react-redux";
+import { fetchContacts } from "store/slices/contactsSlice";
+
+const App = () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchContacts())
+    //eslint-disable-next-line
+  }, [])
+
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <Section title="Phonebook">
+        <ContactForm/>
+      </Section>
+      <Section title="Contacts">
+        <FilterForm />
+        <ContactList />
+      </Section>
     </div>
   );
-};
+}
+
+export default App
