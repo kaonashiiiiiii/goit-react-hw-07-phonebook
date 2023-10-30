@@ -16,9 +16,12 @@ const getFilteredContacts = (state) => {
 
 const getLoadingStatus = (state) => state.contacts.contacts.isLoading
 
+const getError = (state) => state.contacts.contacts.error
+
 export {
   getContacts,
   getFilter,
   getFilteredContacts,
-  getLoadingStatus
+  getLoadingStatus,
+  getError
 }

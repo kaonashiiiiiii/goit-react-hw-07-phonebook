@@ -51,6 +51,7 @@ const heroesSlice = createSlice({
       .addCase(fetchContacts.fulfilled, (state, action) => {
         state.contacts.isLoading = false
         state.contacts.items = action.payload
+        state.contacts.error = null
       })
       .addCase(fetchContacts.rejected, (state, action) => {
         state.contacts.isLoading = false
@@ -62,6 +63,7 @@ const heroesSlice = createSlice({
       .addCase(addContact.fulfilled, (state, action) => {
         state.contacts.isLoading = false
         state.contacts.items = [...state.contacts.items, action.payload]
+        state.contacts.error = null
       })
       .addCase(addContact.rejected, (state, action) => {
         state.contacts.isLoading = false
@@ -73,6 +75,7 @@ const heroesSlice = createSlice({
       .addCase(deleteContact.fulfilled, (state, action) => {
         state.contacts.isLoading = false
         state.contacts.items = state.contacts.items.filter(contact => contact.id !== action.payload.id)
+        state.contacts.error = null
       })
       .addCase(deleteContact.rejected, (state, action) => {
         state.contacts.isLoading = false
